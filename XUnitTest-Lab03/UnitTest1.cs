@@ -18,5 +18,6 @@ namespace XUnitTest_Lab03
             // Assert
             Assert.Equal(5, outPutFromMethod);
         }
+
     }
 }
