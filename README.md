@@ -88,7 +88,7 @@ Tests:
 
 ### Whiteboard Visual
 
-![Image 1](lab03.png)
+![Image 1](https://github.com/NaamaBarIlan/Lab03-ReviewOfCSharp/blob/master/img/lab03.png)
 
 ### Challenge 3
 
