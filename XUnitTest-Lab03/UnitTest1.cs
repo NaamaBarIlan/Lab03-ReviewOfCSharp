@@ -6,17 +6,44 @@ namespace XUnitTest_Lab03
 {
     public class UnitTest1
     {
+
         [Fact]
-        public void IsTheInputNumberGreaterThanZero()
+        public void CanGetAverages()
         {
             // Arrange
-            int input = 10;
+            int[] numbers = { 2, 3, 4 };
 
             // Act
-            int outPutFromMethod = FindAverageNumber(input);
+            double value = FindAverageNumber(numbers);
 
             // Assert
-            Assert.Equal(5, outPutFromMethod);
+            Assert.Equal(3, value);
+        }
+
+        [Fact]
+        public void AreAllNumbersZero()
+        {
+            // Arrange
+            int[] numbers = { 0, 0, 0, 0 };
+
+            // Act
+            double value = FindAverageNumber(numbers);
+
+            // Assert
+            Assert.Equal(0, value);
+        }
+
+        [Fact]
+        public void CanInputArrayBeZero()
+        {
+            // Arrange
+            int[] numbers = {};
+
+            // Act
+            double value = FindAverageNumber(numbers);
+
+            // Assert
+            Assert.Equal(0, value);
         }
 
     }

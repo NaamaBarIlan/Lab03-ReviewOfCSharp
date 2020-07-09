@@ -8,14 +8,17 @@ namespace Lab03_ReviewOfCSharp
         public static void Main(string[] args)
         {
             string path = "../../../words.txt";
-            ReadRemoveAndRewriteFile(path);
+
+            int[] numberArray = UserInputChallengeTwo();
+            FindAverageNumber(numberArray);
 
             //FileAppendAWord();
             //ReadAFileAndOutputContent(path);
             //FileAppendText(path);
-            //UserInputChallengeTwo();
+            //ReadRemoveAndRewriteFile(path);
         }
 
+        // Challenge 02
         /// <summary>
         /// This method askes the user to enter a number between 1-2, prompts the user that number of times for random numbers and returns an int array. 
         /// </summary>
@@ -38,16 +41,27 @@ namespace Lab03_ReviewOfCSharp
             return numberArray;
         }
 
-
         /// <summary>
         /// This method takes as input an int array of between 2-10 numbers and returns the average of these numbers.
         /// </summary>
         /// <param name="numberArray"></param>
         /// <returns></returns>
-        public static int FindAverageNumber(int[] numberArray)
+        public static double FindAverageNumber(int[] numberArray) 
         {
-            
-            return 5;
+            int sum = 0;
+            if (numberArray.Length == 0)
+            {
+                return 0;
+            }
+
+            for (int i = 0; i < numberArray.Length; i++)
+            {
+                sum += numberArray[i];
+            }
+
+            double average = sum / numberArray.Length;
+            //Console.WriteLine("the average: " + average);
+            return average;
         }
 
         // Challenge 06
