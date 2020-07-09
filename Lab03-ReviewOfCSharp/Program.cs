@@ -12,15 +12,15 @@ namespace Lab03_ReviewOfCSharp
         public static void Main(string[] args)
         {
             string path = "../../../words.txt";
+            string wordToDelete = UserInputChallengeEight();
 
+            //OutputDesign();
             //int[] numberArray = UserInputChallengeTwo();
-            OutputDesign();
             //FindAverageNumber(numberArray);
-
             //FileAppendAWord();
             //ReadAFileAndOutputContent(path);
             //FileAppendText(path);
-            //ReadRemoveAndRewriteFile(path);
+            ReadRemoveAndRewriteFile(path, wordToDelete);
         }
 
         //Challenge01
@@ -167,21 +167,34 @@ namespace Lab03_ReviewOfCSharp
         }
 
         // Challenge 08
+
+        static string UserInputChallengeEight()
+        {
+            Console.WriteLine("Please enter the words you wish to delete: ");
+            string wordToDelete = Console.ReadLine();
+            return wordToDelete;
+        }
+
         /// <summary>
         /// This method reads a file, removes one of the words and rewrites it back to the file. 
         /// </summary>
         /// <param name="path"></param>
-        static void ReadRemoveAndRewriteFile(string path)
+        static void ReadRemoveAndRewriteFile(string path, string wordToDelete)
         {
             string[] words = File.ReadAllLines(path);
             string[] newWords = new string[words.Length - 1];
 
-            for (int i = 0; i < words.Length - 1 ; i++)
+            for (int i = 0; i < words.Length; i++)
             {       
-                newWords[i] = words[i];
+                if(words[i] != wordToDelete)
+                {
+                    newWords[i] = words[i];
+                
+                }
             }
 
             File.WriteAllLines(path, newWords);
+
         }
 
     }

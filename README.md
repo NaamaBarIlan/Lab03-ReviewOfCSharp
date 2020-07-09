@@ -10,18 +10,6 @@ Lab: 03 - Review of C#
 
 This series of challenges is designed to evaluate the overall comfort level with C#.
 
-## Challenges
-
-1. Challenge 1
-2. Challenge 2
-3. Challenge 3
-4. Challenge 4
-5. Challenge 5
-6. Challenge 6
-7. Challenge 7
-8. Challenge 8 
-9. Challenge 9
-
 ---
 
 ### Getting Started
@@ -97,6 +85,10 @@ Tests:
 1. Input different ranges of numbers and confirm averages 
 2. Confirm input 
 3. All numbers are 0s
+
+### Whiteboard Visual
+
+![Image 1](lab03.png)
 
 ### Challenge 3
 
@@ -201,16 +193,7 @@ Tests:
 2. Input a sentence and confirm it returns an array 
 3. Use different sentences with different symbols
 
-### Visuals
 
-#### Image Description
-![Image 1](img/)
-
-#### Image Description
-![Image 2](img/)
-
-#### Image Description
-![Image 3](img/)
 
 ---
 
