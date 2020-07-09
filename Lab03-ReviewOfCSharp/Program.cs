@@ -8,8 +8,10 @@ namespace Lab03_ReviewOfCSharp
         public static void Main(string[] args)
         {
             string path = "../../../words.txt";
-            FileAppendAWord();
-            ReadAFileAndOutputContent(path);
+            ReadRemoveAndRewriteFile(path);
+
+            //FileAppendAWord();
+            //ReadAFileAndOutputContent(path);
             //FileAppendText(path);
             //UserInputChallengeTwo();
         }
@@ -77,6 +79,24 @@ namespace Lab03_ReviewOfCSharp
 
             Console.WriteLine(String.Join('\n', content));
 
+        }
+
+        // Challenge 08
+        /// <summary>
+        /// This method reads a file, removes one of the words and rewrites it back to the file. 
+        /// </summary>
+        /// <param name="path"></param>
+        static void ReadRemoveAndRewriteFile(string path)
+        {
+            string[] words = File.ReadAllLines(path);
+            string[] newWords = new string[words.Length - 1];
+
+            for (int i = 0; i < words.Length - 1 ; i++)
+            {       
+                newWords[i] = words[i];
+            }
+
+            File.WriteAllLines(path, newWords);
         }
 
     }
