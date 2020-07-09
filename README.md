@@ -120,6 +120,10 @@ Tests:
 
 No tests are required
 
+Credit: 
+
+[c-sharpcorner.com](https://www.c-sharpcorner.com/blogs/triangle-diamond-pattern-programming-in-c-sharp) helped me understand the problem.
+
 ### Challenge 4
 
 #### Problem Domain

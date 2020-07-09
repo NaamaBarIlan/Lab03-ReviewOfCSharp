@@ -5,12 +5,17 @@ namespace Lab03_ReviewOfCSharp
 {
     public class Program
     {
+        /// <summary>
+        /// This methods is calling all of the challenge methods in this program. 
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             string path = "../../../words.txt";
 
-            int[] numberArray = UserInputChallengeTwo();
-            FindAverageNumber(numberArray);
+            //int[] numberArray = UserInputChallengeTwo();
+            OutputDesign();
+            //FindAverageNumber(numberArray);
 
             //FileAppendAWord();
             //ReadAFileAndOutputContent(path);
@@ -62,6 +67,36 @@ namespace Lab03_ReviewOfCSharp
             double average = sum / numberArray.Length;
             //Console.WriteLine("the average: " + average);
             return average;
+        }
+
+        // Challenge 03
+        /// <summary>
+        /// This method outputs to the console a diamond design. 
+        /// </summary>
+        public static void OutputDesign()
+        {
+            int number = 5;
+            int count = number - 1;
+            for (int i = 1; i <= number; i++)
+            {
+                for (int j = 1; j <= count; j++)
+                    Console.Write(" ");
+                count--;
+                for (int j = 1; j <= 2 * i - 1; j++)
+                    Console.Write("*");
+                Console.WriteLine();
+            }
+            count = 1;
+            for (int i = 1; i <= number - 1; i++)
+            {
+                for (int j = 1; j <= count; j++)
+                    Console.Write(" ");
+                count++;
+                for (int j = 1; j <= 2 * (number - i) - 1; j++)
+                    Console.Write("*");
+                Console.WriteLine();
+            }
+            Console.ReadLine();
         }
 
         // Challenge 06
