@@ -23,6 +23,42 @@ namespace Lab03_ReviewOfCSharp
             //ReadRemoveAndRewriteFile(path);
         }
 
+        //Challenge01
+        /// <summary>
+        /// This method takes user input of 3 numbers and returns the product of these 3 numbers multiplied together.
+        /// If the user puts in less than 3 numbers, return 0. 
+        /// If the user puts in more than 3 numbesr, only multiply the first 3.
+        /// If the number is not a number, default that value to 1. 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static int MultiplyInputNumber(string input)
+        {
+            string[] stringArray = input.Split(',');
+
+            if (stringArray.Length < 3)
+            {
+                return 0;
+            }
+
+            int product = 1;
+
+            for (int i = 0; i < 3; i++)
+            {
+
+                if (int.TryParse(stringArray[i], out int returnValue))
+                {
+                    product = returnValue;
+                }
+                else
+                {
+                    product *= 1;
+                }
+            }
+
+            return product;
+        }
+
         // Challenge 02
         /// <summary>
         /// This method askes the user to enter a number between 1-2, prompts the user that number of times for random numbers and returns an int array. 

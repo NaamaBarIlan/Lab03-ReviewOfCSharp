@@ -8,6 +8,20 @@ namespace XUnitTest_Lab03
     {
 
         [Fact]
+        public void CanReturnZeroWhenLengthIsLessThanThree()
+        {
+            // Arrange
+            string input = "cat";
+
+            // Act
+            int outPutFromMethod = MultiplyInputNumber(input);
+
+            // Assert
+            Assert.Equal(0, outPutFromMethod);
+        }
+
+
+        [Fact]
         public void CanGetAverages()
         {
             // Arrange
