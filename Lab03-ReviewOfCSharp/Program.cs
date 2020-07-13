@@ -6,13 +6,19 @@ namespace Lab03_ReviewOfCSharp
     public class Program
     {
         /// <summary>
-        /// This methods is calling all of the challenge methods in this program. 
+        /// This methods is calling all of the methods in this program. 
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">Default, a string array</param>
         public static void Main(string[] args)
         {
-            string path = "../../../words.txt";
-            string wordToDelete = UserInputChallengeEight();
+
+            Console.WriteLine("Please enter 3 numbers: ");
+            string userInput = Console.ReadLine();
+            MultiplyInputNumber(userInput);
+
+
+            //string path = "../../../words.txt";
+            //string wordToDelete = UserInputChallengeEight();
 
             //OutputDesign();
             //int[] numberArray = UserInputChallengeTwo();
@@ -20,18 +26,18 @@ namespace Lab03_ReviewOfCSharp
             //FileAppendAWord();
             //ReadAFileAndOutputContent(path);
             //FileAppendText(path);
-            ReadRemoveAndRewriteFile(path, wordToDelete);
+            //ReadRemoveAndRewriteFile(path, wordToDelete);
         }
 
         //Challenge01
         /// <summary>
         /// This method takes user input of 3 numbers and returns the product of these 3 numbers multiplied together.
         /// If the user puts in less than 3 numbers, return 0. 
-        /// If the user puts in more than 3 numbesr, only multiply the first 3.
+        /// If the user puts in more than 3 number, only multiply the first 3.
         /// If the number is not a number, default that value to 1. 
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+        /// <param name="input">A user input of a string of 3 numbers</param>
+        /// <returns>An int, either product of numbers, 0, or 1. </returns>
         public static int MultiplyInputNumber(string input)
         {
             string[] stringArray = input.Split(',');
@@ -61,7 +67,7 @@ namespace Lab03_ReviewOfCSharp
 
         // Challenge 02
         /// <summary>
-        /// This method askes the user to enter a number between 1-2, prompts the user that number of times for random numbers and returns an int array. 
+        /// This method asks the user to enter a number between 1-2, prompts the user that number of times for random numbers and returns an int array. 
         /// </summary>
         public static int[] UserInputChallengeTwo()
         {
@@ -83,10 +89,10 @@ namespace Lab03_ReviewOfCSharp
         }
 
         /// <summary>
-        /// This method takes as input an int array of between 2-10 numbers and returns the average of these numbers.
+        /// This method takes as input an int array of between 2-10 numbers.
         /// </summary>
-        /// <param name="numberArray"></param>
-        /// <returns></returns>
+        /// <param name="numberArray">An int array from UserInputChallengeTwo()</param>
+        /// <returns>The average of the array numbers</returns>
         public static double FindAverageNumber(int[] numberArray) 
         {
             int sum = 0;
@@ -156,7 +162,7 @@ namespace Lab03_ReviewOfCSharp
         /// <summary>
         /// This method reads a text file and outputs the contents to the console. 
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">The text file path</param>
         static void ReadAFileAndOutputContent(string path)
         {
 
@@ -165,9 +171,11 @@ namespace Lab03_ReviewOfCSharp
             Console.WriteLine(String.Join('\n', content));
 
         }
-
+        /// <summary>
+        /// This method reads in the file from Challenge 6, removes one of the words, and rewrites it back to the file.
+        /// </summary>
+        /// <returns>The word to delete from the text file</returns>
         // Challenge 08
-
         static string UserInputChallengeEight()
         {
             Console.WriteLine("Please enter the words you wish to delete: ");
@@ -178,7 +186,7 @@ namespace Lab03_ReviewOfCSharp
         /// <summary>
         /// This method reads a file, removes one of the words and rewrites it back to the file. 
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">The text file path</param>
         static void ReadRemoveAndRewriteFile(string path, string wordToDelete)
         {
             string[] words = File.ReadAllLines(path);
