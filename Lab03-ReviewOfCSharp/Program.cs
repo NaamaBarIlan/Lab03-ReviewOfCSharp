@@ -11,11 +11,10 @@ namespace Lab03_ReviewOfCSharp
         /// <param name="args">Default, a string array</param>
         public static void Main(string[] args)
         {
-
+            //Calling Challenge01
             Console.WriteLine("Please enter 3 numbers: ");
             string userInput = Console.ReadLine();
             MultiplyInputNumber(userInput);
-
 
             //string path = "../../../words.txt";
             //string wordToDelete = UserInputChallengeEight();
@@ -40,7 +39,7 @@ namespace Lab03_ReviewOfCSharp
         /// <returns>An int, either product of numbers, 0, or 1. </returns>
         public static int MultiplyInputNumber(string input)
         {
-            string[] stringArray = input.Split(',');
+            string[] stringArray = input.Split(' ');
 
             if (stringArray.Length < 3)
             {
@@ -51,10 +50,9 @@ namespace Lab03_ReviewOfCSharp
 
             for (int i = 0; i < 3; i++)
             {
-
                 if (int.TryParse(stringArray[i], out int returnValue))
                 {
-                    product = returnValue;
+                    product *= returnValue;
                 }
                 else
                 {
