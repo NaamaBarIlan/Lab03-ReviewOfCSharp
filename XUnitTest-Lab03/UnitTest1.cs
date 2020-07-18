@@ -56,7 +56,7 @@ namespace XUnitTest_Lab03
             int[] numbers = { 2, 3, 4 };
 
             // Act
-            double value = FindAverageNumber(numbers);
+            double value = CalculateAverageNumber(numbers);
 
             // Assert
             Assert.Equal(3, value);
@@ -69,7 +69,7 @@ namespace XUnitTest_Lab03
             int[] numbers = { 0, 0, 0, 0 };
 
             // Act
-            double value = FindAverageNumber(numbers);
+            double value = CalculateAverageNumber(numbers);
 
             // Assert
             Assert.Equal(0, value);
@@ -79,13 +79,26 @@ namespace XUnitTest_Lab03
         public void CanInputArrayBeZero()
         {
             // Arrange
-            int[] numbers = {};
+            int[] numbers = { };
 
             // Act
-            double value = FindAverageNumber(numbers);
+            double value = CalculateAverageNumber(numbers);
 
             // Assert
             Assert.Equal(0, value);
+        }
+
+        [Fact]
+        public void CanReturnAverageForDifferentNumbers()
+        {
+            // Arrange
+            int[] numbers = { 24, 6, 87, 9 };
+
+            // Act
+            double value = CalculateAverageNumber(numbers);
+
+            // Assert
+            Assert.Equal(31, value);
         }
 
     }

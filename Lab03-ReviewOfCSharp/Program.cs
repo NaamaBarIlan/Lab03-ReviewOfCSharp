@@ -14,17 +14,16 @@ namespace Lab03_ReviewOfCSharp
             Console.WriteLine("A Review of C#");
 
             //Calling Challenge 01
-            
-            Console.WriteLine("Please enter 3 numbers: ");
-            string userInput = Console.ReadLine();
-            MultiplyInputNumber(userInput);
+
+            //Console.WriteLine("Please enter 3 numbers: ");
+            //string userInput = Console.ReadLine();
+            //MultiplyInputNumber(userInput);
 
             //Console.Clear();
-            
+
 
             // Calling Challenge 02
-            //int[] userInputTwo = UserInputChallengeTwo();
-            //FindAverageNumber(userInputTwo);
+            ReturnAverageNumber();
 
             //string path = "../../../words.txt";
             //string wordToDelete = UserInputChallengeEight();
@@ -78,172 +77,199 @@ namespace Lab03_ReviewOfCSharp
         /// <summary>
         /// This method asks the user to enter a number between 1-2, prompts the user that number of times for random numbers and returns an int array. 
         /// </summary> 
-        /*
-        public static int[] UserInputChallengeTwo()
+        public static void ReturnAverageNumber()
         {
-            
-            while (true)
+            int selectedNumber = 0;
+
+            while (selectedNumber == 0)
             {
-                Console.WriteLine("Please enter a number between 2-10");
-                string firstUserInput = Console.ReadLine();
-                int[] selectedNumber = Convert.ToInt32(firstUserInput);
-                if (selectedNumber < 2 || selectedNumber > 10)
+                try
                 {
-                    Console.WriteLine($"{selectedNumber} is not a number between 2-10");
-                    Console.Clear();
-                }
+                    Console.WriteLine("Please enter a number between 2-10");
+                    string firstUserInput = Console.ReadLine();
+                    int userNum = Convert.ToInt32(firstUserInput);
 
-                int[] numberArray = new int[selectedNumber];
-                for (int i = 0; i < selectedNumber; i++)
+                    if (userNum < 2 || userNum > 10)
+                    {
+                        Console.WriteLine($"{userNum} is not a number between 2-10, please try again");
+                    }
+                    else
+                    {
+                        selectedNumber = userNum;
+                    }
+                }
+                catch (Exception e)
                 {
-                    Console.Write($"{i + 1} of {selectedNumber} - Enter a number: ");
-                    string secondUserInput = Console.ReadLine();
-                    int selectedArrayNumber = Convert.ToInt32(secondUserInput);
-                    numberArray[i] = selectedArrayNumber;
-
-
+                    Console.WriteLine(e.Message);
                 }
-
-                //Console.WriteLine(String.Join(',', numberArray));
-                return numberArray;
             }
-            
-        }
-        */
 
-        /// <summary>
-        /// This method takes as input an int array of between 2-10 numbers.
-        /// </summary>
-        /// <param name="numberArray">An int array from UserInputChallengeTwo()</param>
-        /// <returns>The average of the array numbers</returns>
-        public static double FindAverageNumber(int[] numberArray)
-        {
-            try
+            int[] numberArray = new int[selectedNumber];
+            for (int i = 0; i < selectedNumber; i++)
             {
-                int sum = 0;
-                if (numberArray.Length == 0)
+                while (true)
                 {
+                    try
+                    {
+                        Console.Write($"{i + 1} of {selectedNumber} - Enter a number: ");
+                        string secondUserInput = Console.ReadLine();
+                        int secondUserNum = Convert.ToInt32(secondUserInput);
+
+                        if (secondUserNum >= 0)
+                        {
+                            numberArray[i] = secondUserNum;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{secondUserNum} is not a valid number, please try again:");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+            }
+
+            double calculatedAverage = CalculateAverageNumber(numberArray);
+            Console.WriteLine($"The average of {String.Join(',', numberArray)} is {calculatedAverage}.");
+
+        }
+
+
+            /// <summary>
+            /// This method takes as input an int array of between 2-10 numbers.
+            /// </summary>
+            /// <param name="numberArray">An int array from UserInputChallengeTwo()</param>
+            /// <returns>The average of the array numbers</returns>
+            public static double CalculateAverageNumber(int[] numberArray)
+            {
+                try
+                {
+                    int sum = 0;
+                    if (numberArray.Length == 0)
+                    {
+                        return 0;
+                    }
+
+                    for (int i = 0; i < numberArray.Length; i++)
+                    {
+                        sum += numberArray[i];
+                    }
+
+                    double average = sum / numberArray.Length;
+
+                    return average;
+                }
+                catch (OverflowException e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return 0;
+                }
+                catch (FormatException e)
+                {
+
+                    Console.WriteLine(e.Message);
                     return 0;
                 }
 
-                for (int i = 0; i < numberArray.Length; i++)
+            }
+
+            // Challenge 03
+            /// <summary>
+            /// This method outputs to the console a diamond design. 
+            /// </summary>
+            public static void OutputDesign()
+            {
+                int number = 5;
+                int count = number - 1;
+                for (int i = 1; i <= number; i++)
                 {
-                    sum += numberArray[i];
+                    for (int j = 1; j <= count; j++)
+                        Console.Write(" ");
+                    count--;
+                    for (int j = 1; j <= 2 * i - 1; j++)
+                        Console.Write("*");
+                    Console.WriteLine();
                 }
-
-                double average = sum / numberArray.Length;
-
-                Console.WriteLine("The average of these numbers is: " + average);
-                return average;
-            }
-            catch (OverflowException e)
-            {
-
-                Console.WriteLine(e.Message);
-                return 0;
-            }
-            catch (FormatException e)
-            {
-
-                Console.WriteLine(e.Message);
-                return 0;
-            }
-
-        }
-
-        // Challenge 03
-        /// <summary>
-        /// This method outputs to the console a diamond design. 
-        /// </summary>
-        public static void OutputDesign()
-        {
-            int number = 5;
-            int count = number - 1;
-            for (int i = 1; i <= number; i++)
-            {
-                for (int j = 1; j <= count; j++)
-                    Console.Write(" ");
-                count--;
-                for (int j = 1; j <= 2 * i - 1; j++)
-                    Console.Write("*");
-                Console.WriteLine();
-            }
-            count = 1;
-            for (int i = 1; i <= number - 1; i++)
-            {
-                for (int j = 1; j <= count; j++)
-                    Console.Write(" ");
-                count++;
-                for (int j = 1; j <= 2 * (number - i) - 1; j++)
-                    Console.Write("*");
-                Console.WriteLine();
-            }
-            Console.ReadLine();
-        }
-
-        // Challenge 06
-        /// <summary>
-        /// This method asks the user to input a word, and then saves that word into an external file named words.txt.
-        /// </summary>
-        static void FileAppendAWord()
-        {
-            string path = "../../../words.txt";
-
-            Console.WriteLine("Please enter a word: ");
-            string word = Console.ReadLine();
-
-            using (StreamWriter sw = File.AppendText(path))
-            {
-                sw.WriteLine(word);
-            }
-        }
-
-        // Challenge 07
-        /// <summary>
-        /// This method reads a text file and outputs the contents to the console. 
-        /// </summary>
-        /// <param name="path">The text file path</param>
-        static void ReadAFileAndOutputContent(string path)
-        {
-
-            string[] content = File.ReadAllLines(path);
-
-            Console.WriteLine(String.Join('\n', content));
-
-        }
-        /// <summary>
-        /// This method reads in the file from Challenge 6, removes one of the words, and rewrites it back to the file.
-        /// </summary>
-        /// <returns>The word to delete from the text file</returns>
-        // Challenge 08
-        static string UserInputChallengeEight()
-        {
-            Console.WriteLine("Please enter the words you wish to delete: ");
-            string wordToDelete = Console.ReadLine();
-            return wordToDelete;
-        }
-
-        /// <summary>
-        /// This method reads a file, removes one of the words and rewrites it back to the file. 
-        /// </summary>
-        /// <param name="path">The text file path</param>
-        static void ReadRemoveAndRewriteFile(string path, string wordToDelete)
-        {
-            string[] words = File.ReadAllLines(path);
-            string[] newWords = new string[words.Length - 1];
-
-            for (int i = 0; i < words.Length; i++)
-            {
-                if (words[i] != wordToDelete)
+                count = 1;
+                for (int i = 1; i <= number - 1; i++)
                 {
-                    newWords[i] = words[i];
+                    for (int j = 1; j <= count; j++)
+                        Console.Write(" ");
+                    count++;
+                    for (int j = 1; j <= 2 * (number - i) - 1; j++)
+                        Console.Write("*");
+                    Console.WriteLine();
+                }
+                Console.ReadLine();
+            }
 
+            // Challenge 06
+            /// <summary>
+            /// This method asks the user to input a word, and then saves that word into an external file named words.txt.
+            /// </summary>
+            static void FileAppendAWord()
+            {
+                string path = "../../../words.txt";
+
+                Console.WriteLine("Please enter a word: ");
+                string word = Console.ReadLine();
+
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.WriteLine(word);
                 }
             }
 
-            File.WriteAllLines(path, newWords);
+            // Challenge 07
+            /// <summary>
+            /// This method reads a text file and outputs the contents to the console. 
+            /// </summary>
+            /// <param name="path">The text file path</param>
+            static void ReadAFileAndOutputContent(string path)
+            {
+
+                string[] content = File.ReadAllLines(path);
+
+                Console.WriteLine(String.Join('\n', content));
+
+            }
+            /// <summary>
+            /// This method reads in the file from Challenge 6, removes one of the words, and rewrites it back to the file.
+            /// </summary>
+            /// <returns>The word to delete from the text file</returns>
+            // Challenge 08
+            static string UserInputChallengeEight()
+            {
+                Console.WriteLine("Please enter the words you wish to delete: ");
+                string wordToDelete = Console.ReadLine();
+                return wordToDelete;
+            }
+
+            /// <summary>
+            /// This method reads a file, removes one of the words and rewrites it back to the file. 
+            /// </summary>
+            /// <param name="path">The text file path</param>
+            static void ReadRemoveAndRewriteFile(string path, string wordToDelete)
+            {
+                string[] words = File.ReadAllLines(path);
+                string[] newWords = new string[words.Length - 1];
+
+                for (int i = 0; i < words.Length; i++)
+                {
+                    if (words[i] != wordToDelete)
+                    {
+                        newWords[i] = words[i];
+
+                    }
+                }
+
+                File.WriteAllLines(path, newWords);
+
+            }
 
         }
-
     }
-}
