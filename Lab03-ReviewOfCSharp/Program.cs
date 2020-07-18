@@ -11,17 +11,25 @@ namespace Lab03_ReviewOfCSharp
         /// <param name="args">Default, a string array</param>
         public static void Main(string[] args)
         {
-            //Calling Challenge01
+            Console.WriteLine("A Review of C#");
+
+            //Calling Challenge 01
+            
             Console.WriteLine("Please enter 3 numbers: ");
             string userInput = Console.ReadLine();
             MultiplyInputNumber(userInput);
+
+            //Console.Clear();
+            
+
+            // Calling Challenge 02
+            //int[] userInputTwo = UserInputChallengeTwo();
+            //FindAverageNumber(userInputTwo);
 
             //string path = "../../../words.txt";
             //string wordToDelete = UserInputChallengeEight();
 
             //OutputDesign();
-            //int[] numberArray = UserInputChallengeTwo();
-            //FindAverageNumber(numberArray);
             //FileAppendAWord();
             //ReadAFileAndOutputContent(path);
             //FileAppendText(path);
@@ -41,12 +49,14 @@ namespace Lab03_ReviewOfCSharp
         {
             string[] stringArray = input.Split(' ');
 
+            int product = 1;
+
             if (stringArray.Length < 3)
             {
-                return 0;
+                product = 0;
+                Console.WriteLine($"You have entered less than 3 numbers, so the result is: {product}");
+                return product;
             }
-
-            int product = 1;
 
             for (int i = 0; i < 3; i++)
             {
@@ -60,53 +70,85 @@ namespace Lab03_ReviewOfCSharp
                 }
             }
 
+            Console.WriteLine($"The product of these first 3 numbers is: {product}");
             return product;
         }
 
         // Challenge 02
         /// <summary>
         /// This method asks the user to enter a number between 1-2, prompts the user that number of times for random numbers and returns an int array. 
-        /// </summary>
+        /// </summary> 
+        /*
         public static int[] UserInputChallengeTwo()
         {
-
-            Console.WriteLine("Please enter a number between 2-10");
-            string firstUserInput = Console.ReadLine();
-            int selectedNumber = Convert.ToInt32(firstUserInput);
-            int[] numberArray = new int[selectedNumber];
-            for (int i = 0; i < selectedNumber; i++)
+            
+            while (true)
             {
-                Console.Write($"{i} of {selectedNumber} - Enter a number: ");
-                string secondUserInput = Console.ReadLine();
-                int selectedArrayNumber = Convert.ToInt32(secondUserInput);
-                numberArray[i] = selectedArrayNumber;
-            }
+                Console.WriteLine("Please enter a number between 2-10");
+                string firstUserInput = Console.ReadLine();
+                int[] selectedNumber = Convert.ToInt32(firstUserInput);
+                if (selectedNumber < 2 || selectedNumber > 10)
+                {
+                    Console.WriteLine($"{selectedNumber} is not a number between 2-10");
+                    Console.Clear();
+                }
 
-            //Console.WriteLine(String.Join(',', numberArray));
-            return numberArray;
+                int[] numberArray = new int[selectedNumber];
+                for (int i = 0; i < selectedNumber; i++)
+                {
+                    Console.Write($"{i + 1} of {selectedNumber} - Enter a number: ");
+                    string secondUserInput = Console.ReadLine();
+                    int selectedArrayNumber = Convert.ToInt32(secondUserInput);
+                    numberArray[i] = selectedArrayNumber;
+
+
+                }
+
+                //Console.WriteLine(String.Join(',', numberArray));
+                return numberArray;
+            }
+            
         }
+        */
 
         /// <summary>
         /// This method takes as input an int array of between 2-10 numbers.
         /// </summary>
         /// <param name="numberArray">An int array from UserInputChallengeTwo()</param>
         /// <returns>The average of the array numbers</returns>
-        public static double FindAverageNumber(int[] numberArray) 
+        public static double FindAverageNumber(int[] numberArray)
         {
-            int sum = 0;
-            if (numberArray.Length == 0)
+            try
             {
+                int sum = 0;
+                if (numberArray.Length == 0)
+                {
+                    return 0;
+                }
+
+                for (int i = 0; i < numberArray.Length; i++)
+                {
+                    sum += numberArray[i];
+                }
+
+                double average = sum / numberArray.Length;
+
+                Console.WriteLine("The average of these numbers is: " + average);
+                return average;
+            }
+            catch (OverflowException e)
+            {
+
+                Console.WriteLine(e.Message);
+                return 0;
+            }
+            catch (FormatException e)
+            {
+
+                Console.WriteLine(e.Message);
                 return 0;
             }
 
-            for (int i = 0; i < numberArray.Length; i++)
-            {
-                sum += numberArray[i];
-            }
-
-            double average = sum / numberArray.Length;
-            //Console.WriteLine("the average: " + average);
-            return average;
         }
 
         // Challenge 03
@@ -152,7 +194,7 @@ namespace Lab03_ReviewOfCSharp
 
             using (StreamWriter sw = File.AppendText(path))
             {
-               sw.WriteLine(word);
+                sw.WriteLine(word);
             }
         }
 
@@ -191,11 +233,11 @@ namespace Lab03_ReviewOfCSharp
             string[] newWords = new string[words.Length - 1];
 
             for (int i = 0; i < words.Length; i++)
-            {       
-                if(words[i] != wordToDelete)
+            {
+                if (words[i] != wordToDelete)
                 {
                     newWords[i] = words[i];
-                
+
                 }
             }
 
