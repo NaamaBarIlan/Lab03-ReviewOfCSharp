@@ -199,3 +199,4 @@ Tests:
 
 ### Change Log
  
+1.1 *Updated Main method and Challenge 01, 02, 06, 08* - 18 Jun 2020.
