@@ -39,22 +39,22 @@ namespace Lab03_ReviewOfCSharp
             // Calling Challenge 05
 
             // Calling Challenge 06
-
             string path = "../../../words.txt";
             FileAppendAWord();
+            Console.ReadLine();
+            Console.Clear();
 
             // Calling Challenge 07
+            ReadAFileAndOutputContent(path);
+
 
             // Calling Challenge 08
-            // string wordtodelete = userinputchallengeeight();
-
+            string wordtodelete = UserInputChallengeEight();
+            ReadRemoveAndRewriteFile(wordtodelete);
+            Console.ReadLine();
+            Console.Clear();
 
             // Calling Challenge 09
-
-
-            //ReadAFileAndOutputContent(path);
-            //FileAppendText(path);
-            //ReadRemoveAndRewriteFile(path, wordToDelete);
         }
 
         //Challenge01
@@ -225,12 +225,12 @@ namespace Lab03_ReviewOfCSharp
         {
             string path = "../../../words.txt";
 
-            Console.WriteLine("Please enter a word: ");
-            string word = Console.ReadLine();
+            Console.WriteLine("Please enter a word you wish to add to the file: ");
+            string userWord = Console.ReadLine();
 
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine(word);
+                sw.WriteLine(userWord);
             }
         }
 
@@ -238,24 +238,22 @@ namespace Lab03_ReviewOfCSharp
         /// <summary>
         /// This method reads a text file and outputs the contents to the console. 
         /// </summary>
-        /// <param name="path">The text file path</param>
+        /// <param name="path">The path to the text file the method is reading</param>
         static void ReadAFileAndOutputContent(string path)
         {
-
             string[] content = File.ReadAllLines(path);
 
             Console.WriteLine(String.Join('\n', content));
-
         }
 
+        // Challenge 08
         /// <summary>
         /// This method reads in the file from Challenge 6, removes one of the words, and rewrites it back to the file.
         /// </summary>
         /// <returns>The word to delete from the text file</returns>
-        // Challenge 08
         static string UserInputChallengeEight()
         {
-            Console.WriteLine("Please enter the words you wish to delete: ");
+            Console.WriteLine("Please enter a word you wish to delete from the file: ");
             string wordToDelete = Console.ReadLine();
             return wordToDelete;
         }
@@ -263,20 +261,30 @@ namespace Lab03_ReviewOfCSharp
         /// <summary>
         /// This method reads a file, removes one of the words and rewrites it back to the file. 
         /// </summary>
-        /// <param name="path">The text file path</param>
-        static void ReadRemoveAndRewriteFile(string path, string wordToDelete)
+        /// <param name="path">The path to the text file the method is manipulating</param>
+        static void ReadRemoveAndRewriteFile(string wordToDelete)
         {
+            string path = "../../../words.txt";
             string[] words = File.ReadAllLines(path);
             string[] newWords = new string[words.Length - 1];
-
-            for (int i = 0; i < words.Length; i++)
+            int counter = 0;
+            try
             {
-                if (words[i] != wordToDelete)
+                for (int i = 0; i < words.Length; i++)
                 {
-                    newWords[i] = words[i];
+                    if (words[i] != wordToDelete)
+                    {
+                        newWords[counter] = words[i];
+                        counter++;
 
+                    }
                 }
             }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
 
             File.WriteAllLines(path, newWords);
 
