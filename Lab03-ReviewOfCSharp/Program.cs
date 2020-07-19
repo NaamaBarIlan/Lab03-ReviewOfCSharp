@@ -13,7 +13,6 @@ namespace Lab03_ReviewOfCSharp
         {
             Console.WriteLine("A Review of C#");
 
-            /*
             //Calling Challenge 01
 
             Console.WriteLine("Please enter 3 numbers: ");
@@ -31,12 +30,7 @@ namespace Lab03_ReviewOfCSharp
             OutputDesign();
             Console.ReadLine();
             Console.Clear();
-
-            */
-
-            // Calling Challenge 04
-
-            // Calling Challenge 05
+            
 
             // Calling Challenge 06
             string path = "../../../words.txt";
@@ -47,7 +41,6 @@ namespace Lab03_ReviewOfCSharp
             // Calling Challenge 07
             ReadAFileAndOutputContent(path);
 
-
             // Calling Challenge 08
             string wordtodelete = UserInputChallengeEight();
             ReadRemoveAndRewriteFile(wordtodelete);
@@ -55,6 +48,7 @@ namespace Lab03_ReviewOfCSharp
             Console.Clear();
 
             // Calling Challenge 09
+            //GetSentenceInput();
         }
 
         //Challenge01
@@ -290,5 +284,34 @@ namespace Lab03_ReviewOfCSharp
 
         }
 
+        /// <summary>
+        /// This method prompts the user for a sentence and passes the input through the AnalyzeSentenceToWords method.
+        /// </summary>
+        // Challenge 09
+        static void GetSentenceInput()
+        {
+            Console.WriteLine("Please enter a sentence to be analyzed: ");
+            string sentence = Console.ReadLine();
+            AnalyzeSentenceToWords(sentence);
+
+        }
+
+        /// <summary>
+        /// This method takes a sentence and returns an array that has each word and the number of characters in that word. 
+        /// </summary>
+        /// <param name="sentence">A string sentence to analyze</param>
+        /// <returns>An array of each word from the input and the number of characters in it: "Word: 4"</returns>
+        static string[] AnalyzeSentenceToWords(string sentence)
+        {
+            char[] delimiterChars = { ' ', ',', '.', ':', '\t',};
+            string[] words = sentence.Split(delimiterChars);
+
+            foreach (var word in words)
+            {
+                Console.WriteLine(word);
+            }
+
+            return words;
         }
     }
+}
