@@ -181,7 +181,7 @@ Tests are optional for this challenge
 
 #### Problem Domain
 
-Write a method that asks the user to input a sentence and returns an array that with the word and the number of characters each word has:
+Write a method that asks the user to input a sentence and returns an array with that word and the number of characters each word has:
 
 ```
 Example: input: "This is a sentence about important things"
