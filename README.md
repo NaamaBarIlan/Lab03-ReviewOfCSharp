@@ -8,7 +8,7 @@ Lab: 03 - Review of C#
 
 ## Description
 
-This series of challenges is designed to evaluate the overall comfort level with C#.
+A series of challenges in C#.
 
 ---
 
